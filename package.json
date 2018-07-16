@@ -11,6 +11,9 @@
   "dependencies": {
     "ejs": "^2.6.1",
     "express": "^4.16.3",
-    "mongoose": "^5.2.2"
+    "express-mailer": "^0.3.1",
+    "mongoose": "^5.2.3",
+    "nodemailer": "^4.6.7",
+    "request": "^2.87.0"
   }
 }
