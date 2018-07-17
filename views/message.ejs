@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
+  
 <form action="/message" method="post" >
   <div class="form-group">
     <label for="exampleInputEmail1">Your Name</label>
@@ -23,8 +24,16 @@
     <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="Message" name = "message">
    
   </div>
+  <script>
+    
+    function submitApproval(){
+      alert("Press okay to confirm submittion");
+    }
+    
+  </script>
   
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button onclick = "submitApproval()" type="submit" class="btn btn-primary">Submit</button>
 </form>
+
 </body>
 </html>
