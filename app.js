@@ -5,9 +5,9 @@ var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 var Message = require("./models/message.js");
 var nodemailer = require('nodemailer');
- 
+ var mailgun = require("mailgun");
 
-mongoose.connect('mongodb://localhost/yelp_camp');
+mongoose.connect('mongodb://localhost:27017/yelp_camp',{ useNewUrlParser: true });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
@@ -33,7 +33,7 @@ app.post("/message",function(req,res){
             console.log("error!")
         }else{
             console.log(camp)
-            
+           
             res.redirect("/");
             
         }
@@ -47,3 +47,5 @@ app.post("/message",function(req,res){
 
 
 app.listen(process.env.PORT,process.env.IP);
+
+

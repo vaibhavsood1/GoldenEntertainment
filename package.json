@@ -9,9 +9,12 @@
   "author": "Vaibhav Sood",
   "license": "ISC",
   "dependencies": {
+    "curl": "^0.1.4",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-mailer": "^0.3.1",
+    "mailgun": "^0.5.0",
+    "mailgun-js": "^0.20.0",
     "mongoose": "^5.2.3",
     "nodemailer": "^4.6.7",
     "request": "^2.87.0"
