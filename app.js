@@ -4,10 +4,9 @@ var request = require("request");
 var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 var Message = require("./models/message.js");
-var nodemailer = require('nodemailer');
- var mailgun = require("mailgun");
 
-mongoose.connect('mongodb://localhost:27017/yelp_camp',{ useNewUrlParser: true });
+
+mongoose.connect('mongodb://localhost:27017/golden_enter',{ useNewUrlParser: true });
 
 
 
@@ -36,6 +35,7 @@ app.post("/message",function(req,res){
    
     var msg = {
         name:req.body.name,
+        phone:req.body.phone,
         message:req.body.message
         
     }
@@ -43,7 +43,7 @@ app.post("/message",function(req,res){
         if(err){
             console.log("error!")
         }else{
-            console.log(camp)
+            
            
             res.redirect("/");
             
@@ -55,7 +55,23 @@ app.post("/message",function(req,res){
     
 });
 
-
+app.get("/viewmsgs",function(req, res) {
+    
+    Message.find({},function(err,message){
+        if(!err){
+            res.render("viewMsgs.ejs",{message:message});    
+        }
+    })
+    
+    
+})
+app.get("/deletemsg/:id",function(req, res) {
+    Message.findByIdAndRemove(req.params.id,function(err){
+        if(!err){
+            res.redirect("/viewmsgs");
+        }
+    })
+});
 
 app.listen(process.env.PORT,process.env.IP);
 

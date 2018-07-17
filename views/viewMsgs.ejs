@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title>View All Messages</title>
+</head>
+<body>
+<% for(var i = 0;i<message.length;i++){ %>
+    
+<h4><%= message[i].name %></h4>
+<p><%= message[i].phone %></p>
+<p><%= message[i].message %></p>
+<form action = "/deletemsg/<%= message[i]._id %>">
+    <button>delete</button>
+</form>
+<hr>
+<% } %>
+</body>
+</html>
