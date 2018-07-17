@@ -9,7 +9,18 @@ var nodemailer = require('nodemailer');
 
 mongoose.connect('mongodb://localhost:27017/yelp_camp',{ useNewUrlParser: true });
 
+
+
+
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
+
+
+
+
 app.use(express.static(__dirname + "/public"));
 app.get("/",function(req,res){
     res.render("homepage.ejs");
