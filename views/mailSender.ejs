@@ -30,10 +30,12 @@
 <a href = "/" id = "goBack">Go Back!</a>
 <script>
    
-       
-   
+       if(document.referrer == "https://webdevproject-vaibhavsood12.c9users.io/message"){
       document.getElementById('loginSubmit').click();
-  
+   }
+   else{
+       document.getElementById('goBack').click();
+   }
         
     </script>
 
