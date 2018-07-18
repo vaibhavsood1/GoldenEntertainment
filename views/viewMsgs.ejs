@@ -1,17 +1,37 @@
 <html>
 <head>
 	<title>View All Messages</title>
+	 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.js"></script>
 </head>
 <body>
+    <div class="ui celled list">
 <% for(var i = 0;i<message.length;i++){ %>
     
-<h4><%= message[i].name %></h4>
-<p><%= message[i].phone %></p>
-<p><%= message[i].message %></p>
-<form action = "/deletemsg/<%= message[i]._id %>">
-    <button>delete</button>
+
+  <div class="item">
+    <img class="ui avatar image" src="https://image.freepik.com/free-icon/important-person_318-10744.jpg">
+    <div class="content">
+      <div class="header"><%= message[i].name %></div>
+      <%= message[i].message %> contact:<%= message[i].phone %>
+    </div>
+  </div>
+  <form action = "/deletemsg/<%= message[i]._id %>">
+    <button style = "
+        font-size: 0.7em;
+    float: left;
+    
+    margin-top: -28px;
+    margin-left: 22%;
+    display: inline;
+    "class = "ui negative basic button">delete</button>
 </form>
-<hr>
+
 <% } %>
+</div>
 </body>
 </html>

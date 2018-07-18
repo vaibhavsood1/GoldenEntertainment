@@ -4,7 +4,7 @@ var request = require("request");
 var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 var Message = require("./models/message.js");
-
+var passedMsg = {};
 
 mongoose.connect('mongodb://localhost:27017/golden_enter',{ useNewUrlParser: true });
 
@@ -39,13 +39,15 @@ app.post("/message",function(req,res){
         message:req.body.message
         
     }
+    
     Message.create(msg,function(err,camp){
         if(err){
             console.log("error!")
         }else{
+          
+            passedMsg = msg;
+            res.redirect("/sendmail");
             
-           
-            res.redirect("/");
             
         }
     })
@@ -54,7 +56,12 @@ app.post("/message",function(req,res){
     
     
 });
-
+app.get("/sendmail",function(req, res) {
+   
+    res.render("mailSender.ejs",{msg:passedMsg});
+  
+    
+});
 app.get("/viewmsgs",function(req, res) {
     
     Message.find({},function(err,message){
